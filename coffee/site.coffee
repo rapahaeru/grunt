@@ -1,1 +1,0 @@
-document.getELementById('theButton').onclick = -> alert('ok');
