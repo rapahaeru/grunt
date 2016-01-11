@@ -2,10 +2,18 @@ h1 {
   color: #FF0000; }
 
 p {
-  color: #58c; }
+  color: #58c;
+  display: flex; }
 
 button {
   background-color: #FF0000;
   color: white; }
+
+.teste {
+  text-transform: uppercase; }
+
+span {
+  color: red;
+  display: block; }
 
 /*# sourceMappingURL=site.css.map */

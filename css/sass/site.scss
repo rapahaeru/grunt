@@ -2,5 +2,10 @@ $red: #FF0000;
 $blue: #58c;
 
 h1 {color: $red}
-p {color: $blue;}
+p {color: $blue; display: flex;}
 button {background-color: $red; color: white;}
+
+.teste{
+	text-transform:uppercase;
+}
+span {color: red; display: block;}

@@ -15,20 +15,27 @@ module.exports = function (grunt){
 				}
 			}
 		},
+		uncss: {
+			dist:{
+				files: {
+					'css/site-sass-prefixer.css': ['index.html']
+				} 
+			}
+		},		
 		autoprefixer: {
 			options:{
 				browsers: ['last 2 versions'],
 			},	
-			my_target:{
+			compile:{
 					files : {'css/site-sass-prefixer.css' : 'css/site.css'}
 				}
 		},
-	  //   watch: {
-			// css: {
-			// 	files: 'sass/*.scss',
-			// 	tasks: ['sass', 'autoprefixer']
-			// }
-	  //   },
+	    watch: {
+			css: {
+				files: 'css/sass/site.scss',
+				tasks: ['sass', 'autoprefixer']
+			}
+	    },
 		uglify: {
 			my_target:{
 				files:{
@@ -41,8 +48,13 @@ module.exports = function (grunt){
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-coffee');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default', ['coffee','sass','autoprefixer','uglify']);
+	grunt.loadNpmTasks('grunt-uncss');
+
+	grunt.registerTask('default', ['sass','autoprefixer','uncss','uglify']);
+	grunt.registerTask('MyWatch',['watch:css']);
+
 
 }
