@@ -11,10 +11,24 @@ module.exports = function (grunt){
 		sass: {
 			compile:{
 				files:{
-					'site.css' : 'sass/site.scss'
+					'css/site.css' : 'css/sass/site.scss'
 				}
 			}
 		},
+		autoprefixer: {
+			options:{
+				browsers: ['last 2 versions'],
+			},	
+			my_target:{
+					files : {'css/site-sass-prefixer.css' : 'css/site.css'}
+				}
+		},
+	  //   watch: {
+			// css: {
+			// 	files: 'sass/*.scss',
+			// 	tasks: ['sass', 'autoprefixer']
+			// }
+	  //   },
 		uglify: {
 			my_target:{
 				files:{
@@ -27,7 +41,8 @@ module.exports = function (grunt){
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-coffee');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default', ['coffee','sass','uglify']);
+	grunt.registerTask('default', ['coffee','sass','autoprefixer','uglify']);
 
 }
